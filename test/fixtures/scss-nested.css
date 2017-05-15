@@ -1,0 +1,15 @@
+.foo {
+  color: pink;
+.bar {
+  color: blue;
+}
+
+
+  &:hover {
+color: red;
+
+> a {
+  color: green;
+}
+  }
+}

@@ -1,0 +1,15 @@
+a{
+  color: red;
+}
+a+b {
+  color: pink;
+}
+a~b {
+  color: pink;
+}
+a>b{
+  color: pink;
+}
+a    +    b {
+  color: pink;
+}

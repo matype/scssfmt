@@ -1,0 +1,10 @@
+
+@charset 'utf-8';
+
+@import 'components/foo';
+@import 'components/bar';
+@import 'components/baz';
+
+@import 'pages/foo';
+@import 'pages/bar';
+@import 'pages/baz';

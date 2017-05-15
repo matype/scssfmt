@@ -1,0 +1,9 @@
+@import 'foo.css';@import 'bar.css';
+
+
+@media(max-width: 480px)
+{
+a {
+  color: pink;
+}
+}

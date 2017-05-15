@@ -1,0 +1,13 @@
+$global : #fff;
+$global2:#000;
+
+
+.foo {
+  $local: #111;
+
+  .nest {
+    $nest : #222;
+
+    color: $nest;
+  }
+}
