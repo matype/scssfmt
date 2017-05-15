@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/morishitter/stylefmt/git"
+    "url": "git://github.com/morishitter/tidify/git"
   },
   "engines": {
-    "node": ">=4.2.0"
+    "node": ">=6.0.0"
   },
   "keywords": [
     "css",

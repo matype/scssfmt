@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const stdin = require('stdin')
 const pkg = require('./package.json')
-const stylefmt = require('./')
+const tidify = require('./')
 
 const minimist = require('minimist')
 const argv = minimist(process.argv.slice(2), {
@@ -32,7 +32,7 @@ if (argv.v) {
 }
 
 if (argv.h) {
-  console.log('Usage: stylefmt [options] input-name [output-name]')
+  console.log('Usage: tidify [options] input-name [output-name]')
   console.log('')
   console.log('Options:')
   console.log('')
@@ -57,7 +57,7 @@ if (argv.r) {
 
   const css = fs.readFileSync(fullPath, 'utf-8')
 
-  postcss([stylefmt()])
+  postcss([tidify()])
     .process(css, {
       from: fullPath,
       syntax: scss
@@ -68,7 +68,7 @@ if (argv.r) {
         console.log(handleDiff(input, css, formatted))
       } else {
         if (css !== formatted) {
-          fs.writeFile(output, formatted, function (err) {
+          fs.writeFile(output, formatted, err => {
             if (err) {
               throw err
             }
@@ -77,9 +77,9 @@ if (argv.r) {
       }
     })
 } else {
-  stdin(function (css) {
+  stdin(css => {
     options.codeFilename = argv['stdin-filename']
-    postcss([stylefmt()])
+    postcss([tidify()])
       .process(css, {
         from: options.codeFilename,
         syntax: scss
@@ -99,7 +99,7 @@ function processMultipleFiles (files) {
   Promise.all(files.map(file => {
     const fullPath = path.resolve(process.cwd(), file)
     const css = fs.readFileSync(fullPath, 'utf-8')
-    return postcss([stylefmt()])
+    return postcss([tidify()])
       .process(css, {
         from: fullPath,
         syntax: scss
@@ -109,7 +109,7 @@ function processMultipleFiles (files) {
         if (argv.d) {
           return handleDiff(file, css, formatted)
         } else if (css !== formatted) {
-          fs.writeFile(fullPath, formatted, function (err) {
+          fs.writeFile(fullPath, formatted, err => {
             if (err) {
               throw err
             }
@@ -121,7 +121,7 @@ function processMultipleFiles (files) {
     if (argv.d) {
       console.log(messages.join('\n\n'))
     } else {
-      messages = messages.filter(function (file){
+      messages = messages.filter(file => {
         return file
       })
       if(messages.length){
