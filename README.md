@@ -1,6 +1,6 @@
-## Tidify
+# Tidify [![Build Status](https://travis-ci.org/morishitter/tidify.svg)](https://travis-ci.org/morishitter/tidify)
 
-Fast and simple CSS formatter.
+Fast and simple formatter for CSS and SCSS.
 
 Tidify'd code is:
 
