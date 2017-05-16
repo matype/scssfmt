@@ -18,6 +18,7 @@ compare('selector')
 compare('semicolon')
 compare('rule')
 compare('atrule')
+compare('comments')
 
 compare('scss-nested')
 compare('scss-if-else')

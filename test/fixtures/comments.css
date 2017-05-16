@@ -1,0 +1,22 @@
+.selector /* comment */ > .foo,
+/* comment */.foo {
+  color: red;
+}
+
+.selector {
+  color: red; /* comment */
+}
+
+.selector {
+  /* comment */
+  color: red;
+}
+
+.selector {
+  color: red;
+
+  .nested {
+    // comment
+    color: red;
+  }
+}

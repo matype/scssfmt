@@ -43,15 +43,19 @@ module.exports = postcss.plugin('tidify', () => {
       rule.raws.after = NEW_LINE + indentation
       rule.raws.semicolon = true
 
-      let tmp = []
-      let selector
-      const separator = `,${NEW_LINE}` + indentation
-      rule.selectors.forEach(selector => {
-        if (!hasPlusInsideParens(selector) && !isAttrSelector(selector)) selector = selector.replace(/\s*([+~>])\s*/g, " $1 ").trim()
-        if (isAttrSelector(selector)) selector = selector.replace(/\[\s*(\S+)\s*\]/g, "[$1]")
-        tmp.push(selector)
-      })
-      rule.selector = tmp.join(separator)
+      if (rule.raws.selector) {
+        rule.selector = rule.raws.selector.raw
+      } else {
+        let tmp = []
+        let selector
+        const separator = `,${NEW_LINE}` + indentation
+        rule.selectors.forEach(selector => {
+          if (!hasPlusInsideParens(selector) && !isAttrSelector(selector)) selector = selector.replace(/\s*([+~>])\s*/g, " $1 ").trim()
+          if (isAttrSelector(selector)) selector = selector.replace(/\[\s*(\S+)\s*\]/g, "[$1]")
+          tmp.push(selector)
+        })
+        rule.selector = tmp.join(separator)
+      }
     })
 
     root.walkDecls(decl => {
@@ -59,7 +63,7 @@ module.exports = postcss.plugin('tidify', () => {
       const declValue = decl.raws.value
       if (declValue) decl.raws.value.raw = declValue.raw.trim()
       decl.raws.before = decl === root.first ? NO_SPACES : getNodeBefore(decl, indentation)
-      decl.raws.between = ': '
+      decl.raws.between = `:${ONE_SPACE}`
     })
 
     root.walkAtRules(atrule => {
