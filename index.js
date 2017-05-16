@@ -1,6 +1,7 @@
+const os = require('os')
 const postcss = require('postcss')
 
-const NEW_LINE = '\n'
+const NEW_LINE = os.EOL
 const NO_SPACES = ''
 const ONE_SPACE = ' '
 const TWO_SPACES = '  '
@@ -44,7 +45,7 @@ module.exports = postcss.plugin('tidify', () => {
 
       let tmp = []
       let selector
-      const separator = ',\n' + indentation
+      const separator = `,${NEW_LINE}` + indentation
       rule.selectors.forEach(selector => {
         if (!hasPlusInsideParens(selector) && !isAttrSelector(selector)) selector = selector.replace(/\s*([+~>])\s*/g, " $1 ").trim()
         if (isAttrSelector(selector)) selector = selector.replace(/\[\s*(\S+)\s*\]/g, "[$1]")
