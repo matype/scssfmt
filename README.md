@@ -34,6 +34,12 @@ $ yarn add --dev tidify
 
 ### in Command Line
 
+If you install Tidify global, you can use it easily in CLI.
+
+```
+$ npm install -g tidify
+```
+
 CLI help:
 
 ```
@@ -47,15 +53,70 @@ Options:
 
   -d, --diff             Output diff against original file
   -r, --recursive        Format list of space seperated files(globs) in place
+  -w, --watch            Watch directories or files
   -v, --version          Output the version number
   -h, --help             Output usage information
   --stdin-filename       A filename to assign stdin input.
 ```
 
-Tidify can also read a file from stdin if there are no input-fle as argument in CLI.
+Format one file:
 
 ```
-$ cat input.css | tidify
+$ tidify input.css
+```
+
+Format multiple files by glob:
+
+```
+$ tidify --recursive 'app/assets/stylesheets/**/*.scss'
+```
+
+Watch one file:
+
+```
+$ tidify --watch input.css
+```
+
+Watch multiple files by glob:
+
+```
+$ tidify --watch 'app/assets/stylesheets/**/*.scss'
+```
+
+Show diff (don't change code):
+
+```
+$ tidify input.css --diff
+```
+
+Tidify can also read a file from stdin if there are no input-file as argument in CLI.
+
+```
+$ cat input.css | tidify --stdin-filename input.css
+```
+
+### Node.js
+
+```js
+const fs = require('fs')
+const tidify = require('tidify')
+
+const css = fs.readFileSync('example.css', 'utf-8')
+const formatted = tidify(css)
+```
+
+### PostCSS plugin
+
+```js
+const fs = require('fs')
+const tidify = require('tidify')
+
+const css = fs.readFileSync('example.css', 'utf-8')
+postcss([tidify.plugin()])
+  .process(css, {syntax: scss})
+  .then(result => {
+    const formatted = result.css
+  })
 ```
 
 ## Examples
