@@ -1,3 +1,8 @@
+## v0.2.0
+
+- Add a API to run as a standalone node package
+- Imprement `--watch` option in CLI
+
 ## v0.1.3
 
 Fix a bug when comments are in selectors.
