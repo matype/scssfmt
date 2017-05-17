@@ -40,36 +40,13 @@ If you install Tidify global, you can use it easily in CLI.
 $ npm install -g tidify
 ```
 
-CLI help:
+Simple usage:
 
 ```
-$ tidify --help
+$ tidify input.css output.css
 ```
 
-```
-Usage: tidify [options] input-name [output-name]
-
-Options:
-
-  -d, --diff             Output diff against original file
-  -r, --recursive        Format list of space seperated files(globs) in place
-  -w, --watch            Watch directories or files
-  -v, --version          Output the version number
-  -h, --help             Output usage information
-  --stdin-filename       A filename to assign stdin input.
-```
-
-Format one file:
-
-```
-$ tidify input.css
-```
-
-Format multiple files by glob:
-
-```
-$ tidify --recursive 'app/assets/stylesheets/**/*.scss'
-```
+#### `--watch` 
 
 Watch one file:
 
@@ -83,11 +60,44 @@ Watch multiple files by glob:
 $ tidify --watch 'app/assets/stylesheets/**/*.scss'
 ```
 
+#### `--recursive`
+
+Format multiple files by glob:
+
+```
+$ tidify --recursive 'app/assets/stylesheets/**/*.scss'
+```
+
+#### `--diff`
+
 Show diff (don't change code):
 
 ```
 $ tidify input.css --diff
 ```
+
+#### `--help`
+
+CLI help:
+
+```
+$ tidify --help
+```
+
+```
+Usage: tidify [options] input-name [output-name]
+
+Options:
+
+  -w, --watch            Watch directories or files
+  -d, --diff             Output diff against original file
+  -r, --recursive        Format list of space seperated files(globs) in place
+  -v, --version          Output the version number
+  -h, --help             Output usage information
+  --stdin-filename       A filename to assign stdin input.
+```
+
+#### Use stdin as inputs
 
 Tidify can also read a file from stdin if there are no input-file as argument in CLI.
 
