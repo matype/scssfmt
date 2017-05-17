@@ -1,3 +1,7 @@
+## v0.2.1
+
+Fix a bug with `--watch` option in CLI.
+
 ## v0.2.0
 
 - Add a API to run as a standalone node package
