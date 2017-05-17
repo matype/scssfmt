@@ -17,6 +17,7 @@ const argv = minimist(process.argv.slice(2), {
     h: 'help',
     r: 'recursive',
     v: 'version',
+    w: 'watch',
   }
 })
 
@@ -37,9 +38,9 @@ if (argv.h) {
   console.log('')
   console.log('Options:')
   console.log('')
+  console.log('  -w, --watch            Watch directories or files')
   console.log('  -d, --diff             Output diff against original file')
   console.log('  -r, --recursive        Format list of space seperated files(globs) in place')
-  console.log('  -w, --watch            Watch directories or files')
   console.log('  -v, --version          Output the version number')
   console.log('  -h, --help             Output usage information')
   console.log('  --stdin-filename       A filename to assign stdin input.')
