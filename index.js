@@ -1,5 +1,6 @@
 const os = require('os')
 const postcss = require('postcss')
+const scss = require('postcss-scss')
 
 const NEW_LINE = os.EOL
 const NO_SPACES = ''
@@ -34,7 +35,7 @@ const isAttrSelector = selector => /\[.+\]/.test(selector)
 const countNewLine = str => str.split(NEW_LINE).length - 1
 const getIndent = node => TWO_SPACES.repeat(getDepth(node))
 
-module.exports = postcss.plugin('tidify', () => {
+const plugin = postcss.plugin('tidify', () => {
   return root => {
     root.walkRules(rule => {
       const indentation = getIndent(rule)
@@ -76,3 +77,12 @@ module.exports = postcss.plugin('tidify', () => {
     })
   }
 })
+
+const tidify = (css, options) => {
+  options = options || {}
+  options.syntax = scss
+  return postcss([plugin()]).process(css, options).css
+}
+
+module.exports = tidify
+module.exports.plugin = plugin

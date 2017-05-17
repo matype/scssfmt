@@ -9,10 +9,15 @@ const output = name => fs.readFileSync(`test/fixtures/${name}.out.css`, 'utf-8')
 
 const compare = name => {
   test(name, t => {
-    const res = postcss().use(tidify()).process(fixture(name), {syntax: scss}).css
+    const res = tidify(fixture(name))
     t.is(res, output(name))
   })
 }
+
+test('test as a postcss plugin', t => {
+  const res = postcss().use(tidify.plugin()).process(fixture('rule'), {syntax: scss}).css
+  t.is(res, output('rule'))
+})
 
 compare('selector')
 compare('semicolon')
