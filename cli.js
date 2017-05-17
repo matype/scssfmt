@@ -24,6 +24,7 @@ const postcss = require('postcss')
 const scss = require('postcss-scss')
 const chalk = require('chalk')
 const JsDiff = require('diff')
+const chokidar = require('chokidar')
 
 
 if (argv.v) {
@@ -38,6 +39,7 @@ if (argv.h) {
   console.log('')
   console.log('  -d, --diff             Output diff against original file')
   console.log('  -r, --recursive        Format list of space seperated files(globs) in place')
+  console.log('  -w, --watch            Watch directories or files')
   console.log('  -v, --version          Output the version number')
   console.log('  -h, --help             Output usage information')
   console.log('  --stdin-filename       A filename to assign stdin input.')
@@ -50,6 +52,32 @@ let options = {}
 if (argv.r) {
   const globby = require('globby')
   globby([path.join(argv.r)].concat(argv._)).then(processMultipleFiles)
+} else if (argv.w) {
+  let watcher = chokidar.watch(argv.w, {
+    ignoreInitial: true
+  })
+  let log = console.log.bind(console)
+  const format = filePath => {
+    const fullPath = path.resolve(process.cwd(), filePath)
+    const css = fs.readFileSync(fullPath, 'utf-8')
+    const formatted = tidify(css)
+    if (css !== formatted) {
+      fs.writeFileSync(fullPath, formatted)
+      return true
+    }
+    return false
+  }
+  watcher
+    .on('add', filePath => {
+      if (format(filePath)) {
+        log(chalk.yellow(`Added ${filePath} file has been formatted`))
+      }
+    })
+    .on('change', filePath => {
+      if (format(filePath)) {
+        log(chalk.green(`Changed ${filePath} file has been formatted`))
+      }
+    })
 } else if (argv._[0]) {
   const input = argv._[0]
   const fullPath = path.resolve(process.cwd(), input)
@@ -124,7 +152,7 @@ function processMultipleFiles (files) {
       messages = messages.filter(file => {
         return file
       })
-      if(messages.length){
+      if (messages.length){
         messages = messages.join(', ') + '\n\n' + messages.length
       } else {
         messages = 'No'
