@@ -83,10 +83,11 @@ if (argv.r) {
   const input = argv._[0]
   const fullPath = path.resolve(process.cwd(), input)
   const output = argv._[1] || argv._[0]
+  console.log(output)
 
   const css = fs.readFileSync(fullPath, 'utf-8')
 
-  postcss([tidify()])
+  postcss([tidify.plugin()])
     .process(css, {
       from: fullPath,
       syntax: scss
@@ -108,7 +109,7 @@ if (argv.r) {
 } else {
   stdin(css => {
     options.codeFilename = argv['stdin-filename']
-    postcss([tidify()])
+    postcss([tidify.plugin()])
       .process(css, {
         from: options.codeFilename,
         syntax: scss
@@ -128,7 +129,7 @@ function processMultipleFiles (files) {
   Promise.all(files.map(file => {
     const fullPath = path.resolve(process.cwd(), file)
     const css = fs.readFileSync(fullPath, 'utf-8')
-    return postcss([tidify()])
+    return postcss([tidify.plugin()])
       .process(css, {
         from: fullPath,
         syntax: scss
