@@ -1,3 +1,7 @@
+## v0.2.2
+
+Fix a bug in CLI.
+
 ## v0.2.1
 
 Fix a bug with `--watch` option in CLI.
