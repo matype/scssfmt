@@ -1,0 +1,15 @@
+@mixin   foo ($a, $b)
+
+{
+color   : $a;
+      font-size:$b;
+}
+
+.rule {
+  @include
+  foo(pink, 12px)
+}
+
+.foo {
+  @include foo
+}
