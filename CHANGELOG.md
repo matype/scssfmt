@@ -1,3 +1,7 @@
+## v0.3.0
+
+Add `--ignore` option in CLI, now it can use with `--watch` option.
+
 ## v0.2.2
 
 Fix a bug in CLI.
