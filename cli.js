@@ -15,6 +15,7 @@ const argv = minimist(process.argv.slice(2), {
   alias: {
     d: 'diff',
     h: 'help',
+    i: 'ignore',
     r: 'recursive',
     v: 'version',
     w: 'watch',
@@ -41,6 +42,7 @@ if (argv.h) {
   console.log('  -w, --watch            Watch directories or files')
   console.log('  -d, --diff             Output diff against original file')
   console.log('  -r, --recursive        Format list of space seperated files(globs) in place')
+  console.log('  -i, --ignore           Patterns for files which should be ignored (can use with `--watch` option)')
   console.log('  -v, --version          Output the version number')
   console.log('  -h, --help             Output usage information')
   console.log('  --stdin-filename       A filename to assign stdin input.')
@@ -54,9 +56,13 @@ if (argv.r) {
   const globby = require('globby')
   globby([path.join(argv.r)].concat(argv._)).then(processMultipleFiles)
 } else if (argv.w) {
-  let watcher = chokidar.watch(argv.w, {
+  let opts = {
     ignoreInitial: true
-  })
+  }
+  if (argv.i) {
+    opts.ignored = argv.i
+  }
+  let watcher = chokidar.watch(argv.w, opts)
   let log = console.log.bind(console)
   const format = filePath => {
     const fullPath = path.resolve(process.cwd(), filePath)
