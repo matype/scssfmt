@@ -46,7 +46,7 @@ Simple usage:
 $ tidify input.css output.css
 ```
 
-#### `--watch` 
+#### `--watch`
 
 Watch one file:
 
@@ -58,6 +58,18 @@ Watch multiple files by glob:
 
 ```
 $ tidify --watch 'app/assets/stylesheets/**/*.scss'
+```
+
+with `--ignore` option:
+
+```
+$ tidify --watch 'app/assets/stylesheets/**/*.scss' --ignore app/assets/stylesheets/ignore.css
+```
+
+also can use specify multiple files by glob:
+
+```
+$ tidify --watch 'app/assets/stylesheets/**/*.scss' --ignore 'app/assets/stylesheets/ignore/**/*'
 ```
 
 #### `--recursive`
