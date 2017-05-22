@@ -4,8 +4,8 @@ import postcss from 'postcss'
 import scss from 'postcss-scss'
 import tidify from '../'
 
-const fixture = name => fs.readFileSync(`test/fixtures/${name}.css`, 'utf-8')
-const output = name => fs.readFileSync(`test/fixtures/${name}.out.css`, 'utf-8')
+const fixture = name => fs.readFileSync(`test/fixtures/${name}.scss`, 'utf-8')
+const output = name => fs.readFileSync(`test/fixtures/${name}.out.scss`, 'utf-8')
 
 const compare = name => {
   test(name, t => {
@@ -25,9 +25,9 @@ compare('rule')
 compare('atrule')
 compare('comments')
 
-compare('scss-nested')
-compare('scss-if-else')
-compare('scss-for')
-compare('scss-variables')
-compare('scss-import')
-compare('scss-mixins')
+compare('nested')
+compare('if-else')
+compare('for')
+compare('variables')
+compare('import')
+compare('mixins')
