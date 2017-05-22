@@ -21,7 +21,7 @@ const getNodeBefore = (node, indentation) => {
   let nodeBefore = node.type === 'decl' ? NEW_LINE + indentation : NO_SPACES
   const prev = node.prev()
   if (prev || node.parent.type !== 'root') {
-    if (node.type !== 'decl') nodeBefore = NEW_LINE
+    if (node.type !== 'decl') nodeBefore = NEW_LINE + indentation
     const nlCount = countNewLine(node.raws.before)
     if (nlCount) nodeBefore = NEW_LINE.repeat(nlCount) + indentation
   }
@@ -74,6 +74,7 @@ const plugin = postcss.plugin('tidify', () => {
       atrule.raws.after = NEW_LINE + indentation
       atrule.raws.between = atrule.nodes ? ONE_SPACE : NO_SPACES
       atrule.raws.afterName = atrule.params ? ONE_SPACE : NO_SPACES
+      if (atrule.raws.semicolon !== undefined) atrule.raws.semicolon = true
     })
   }
 })
