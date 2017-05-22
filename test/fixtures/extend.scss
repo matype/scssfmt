@@ -1,0 +1,8 @@
+%rule
+{
+color:red;
+}
+
+.foo{
+  @extend    rule     ;
+}
