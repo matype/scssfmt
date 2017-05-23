@@ -87,31 +87,15 @@ if (argv.r) {
     })
 } else if (argv._[0]) {
   const input = argv._[0]
-  const fullPath = path.resolve(process.cwd(), input)
   const output = argv._[1] || argv._[0]
-  console.log(output)
-
+  const fullPath = path.resolve(process.cwd(), input)
   const css = fs.readFileSync(fullPath, 'utf-8')
-
-  postcss([tidify.plugin()])
-    .process(css, {
-      from: fullPath,
-      syntax: scss
-    })
-    .then(result => {
-      const formatted = result.css
-      if (argv.d) {
-        console.log(handleDiff(input, css, formatted))
-      } else {
-        if (css !== formatted) {
-          fs.writeFile(output, formatted, err => {
-            if (err) {
-              throw err
-            }
-          })
-        }
-      }
-    })
+  const formatted = tidify(css)
+  if (argv.d) {
+    console.log(handleDiff(input, css, formatted))
+  } else if (css !== formatted) {
+    fs.writeFileSync(output, formatted)
+  }
 } else {
   stdin(css => {
     options.codeFilename = argv['stdin-filename']
