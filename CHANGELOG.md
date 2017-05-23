@@ -1,3 +1,10 @@
+## v0.4.0
+
+- **Rename to scssfmt**
+- Support to format one linear rules
+- Fix a bug in nested atrule
+
+
 ## v0.3.0
 
 Add `--ignore` option in CLI, now it can use with `--watch` option.
