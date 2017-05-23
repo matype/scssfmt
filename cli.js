@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const stdin = require('stdin')
 const pkg = require('./package.json')
-const tidify = require('./')
+const scssfmt = require('./')
 
 const minimist = require('minimist')
 const argv = minimist(process.argv.slice(2), {
@@ -35,7 +35,7 @@ if (argv.v) {
 }
 
 if (argv.h) {
-  console.log('Usage: tidify [options] input-name [output-name]')
+  console.log('Usage: scssfmt [options] input-name [output-name]')
   console.log('')
   console.log('Options:')
   console.log('')
@@ -67,7 +67,7 @@ if (argv.r) {
   const format = filePath => {
     const fullPath = path.resolve(process.cwd(), filePath)
     const css = fs.readFileSync(fullPath, 'utf-8')
-    const formatted = tidify(css)
+    const formatted = scssfmt(css)
     if (css !== formatted) {
       fs.writeFileSync(fullPath, formatted)
       return true
@@ -90,7 +90,7 @@ if (argv.r) {
   const output = argv._[1] || argv._[0]
   const fullPath = path.resolve(process.cwd(), input)
   const css = fs.readFileSync(fullPath, 'utf-8')
-  const formatted = tidify(css)
+  const formatted = scssfmt(css)
   if (argv.d) {
     console.log(handleDiff(input, css, formatted))
   } else if (css !== formatted) {
@@ -99,7 +99,7 @@ if (argv.r) {
 } else {
   stdin(css => {
     options.codeFilename = argv['stdin-filename']
-    postcss([tidify.plugin()])
+    postcss([scssfmt.plugin()])
       .process(css, {
         from: options.codeFilename,
         syntax: scss
@@ -119,7 +119,7 @@ function processMultipleFiles (files) {
   Promise.all(files.map(file => {
     const fullPath = path.resolve(process.cwd(), file)
     const css = fs.readFileSync(fullPath, 'utf-8')
-    return postcss([tidify.plugin()])
+    return postcss([scssfmt.plugin()])
       .process(css, {
         from: fullPath,
         syntax: scss

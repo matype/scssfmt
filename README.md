@@ -1,49 +1,46 @@
-# Tidify [![Build Status](https://travis-ci.org/morishitter/tidify.svg)](https://travis-ci.org/morishitter/tidify)
+# scssfmt [![Build Status](https://travis-ci.org/morishitter/scssfmt.svg)](https://travis-ci.org/morishitter/scssfmt)
 
-Tidify is a fast and simple formatter for CSS and SCSS code.
+> Fast and Simple SCSS formatter
 
-Tidify can format following code:
+<div align="center" style="margin:30px 0">
+  <a href="https://github.com/morishitter/scssfmt">
+    <img width=360px src="http://morishitter.github.io/scssfmt-logo.svg">
+  </a>
+</div>
+<br>
 
-- Vanilla CSS
-- SCSS syntax of Sass
+scssfmt is a fast and simple formatter for SCSS syntax of Sass.
 
-and Tidify is 3 to 4 times faster than [Stylefmt](https://github.com/morishitter/stylefmt).
-
-Tidify'd code is:
-
-- easier to **write** : never worry about minor formatting concerns while hacking away.
-- easier to **read** : when all code looks the same you need not mentally convert others' formatting style into something you can understand.
-- easier to **maintain** : mechanical changes to the source don't cause unrelated changes to the file's formatting; diffs show only the real changes.
-- **uncontroversial** : never have a debate about spacing or brace position ever again!
+scssfmt is 3 to 4 times faster than [stylefmt](https://github.com/morishitter/stylefmt).
 
 ## Installation
 
 via npm:
 
 ```
-$ npm install tidify
+$ npm install scssfmt
 ```
 
 via yarn:
 
 ```
-$ yarn add --dev tidify
+$ yarn add --dev scssfmt
 ```
 
 ## Usage
 
 ### in Command Line
 
-If you install Tidify global, you can use it easily in CLI.
+If you install scssfmt global, you can use it easily in CLI.
 
 ```
-$ npm install -g tidify
+$ npm install -g scssfmt
 ```
 
 Simple usage:
 
 ```
-$ tidify input.css output.css
+$ scssfmt input.css output.css
 ```
 
 #### `--watch`
@@ -51,25 +48,25 @@ $ tidify input.css output.css
 Watch one file:
 
 ```
-$ tidify --watch input.css
+$ scssfmt --watch input.css
 ```
 
 Watch multiple files by glob:
 
 ```
-$ tidify --watch 'app/assets/stylesheets/**/*.scss'
+$ scssfmt --watch 'app/assets/stylesheets/**/*.scss'
 ```
 
 with `--ignore` option:
 
 ```
-$ tidify --watch 'app/assets/stylesheets/**/*.scss' --ignore app/assets/stylesheets/ignore.css
+$ scssfmt --watch 'app/assets/stylesheets/**/*.scss' --ignore app/assets/stylesheets/ignore.css
 ```
 
 also can use specify multiple files by glob:
 
 ```
-$ tidify --watch 'app/assets/stylesheets/**/*.scss' --ignore 'app/assets/stylesheets/ignore/**/*'
+$ scssfmt --watch 'app/assets/stylesheets/**/*.scss' --ignore 'app/assets/stylesheets/ignore/**/*'
 ```
 
 #### `--recursive`
@@ -77,7 +74,7 @@ $ tidify --watch 'app/assets/stylesheets/**/*.scss' --ignore 'app/assets/stylesh
 Format multiple files by glob:
 
 ```
-$ tidify --recursive 'app/assets/stylesheets/**/*.scss'
+$ scssfmt --recursive 'app/assets/stylesheets/**/*.scss'
 ```
 
 #### `--diff`
@@ -85,7 +82,7 @@ $ tidify --recursive 'app/assets/stylesheets/**/*.scss'
 Show diff (don't change code):
 
 ```
-$ tidify input.css --diff
+$ scssfmt input.css --diff
 ```
 
 #### `--help`
@@ -93,11 +90,11 @@ $ tidify input.css --diff
 CLI help:
 
 ```
-$ tidify --help
+$ scssfmt --help
 ```
 
 ```
-Usage: tidify [options] input-name [output-name]
+Usage: scssfmt [options] input-name [output-name]
 
 Options:
 
@@ -111,30 +108,30 @@ Options:
 
 #### Use stdin as inputs
 
-Tidify can also read a file from stdin if there are no input-file as argument in CLI.
+scssfmt can also read a file from stdin if there are no input-file as argument in CLI.
 
 ```
-$ cat input.css | tidify --stdin-filename input.css
+$ cat input.css | scssfmt --stdin-filename input.css
 ```
 
 ### Node.js
 
 ```js
 const fs = require('fs')
-const tidify = require('tidify')
+const scssfmt = require('scssfmt')
 
 const css = fs.readFileSync('example.css', 'utf-8')
-const formatted = tidify(css)
+const formatted = scssfmt(css)
 ```
 
 ### PostCSS plugin
 
 ```js
 const fs = require('fs')
-const tidify = require('tidify')
+const scssfmt = require('scssfmt')
 
 const css = fs.readFileSync('example.css', 'utf-8')
-postcss([tidify.plugin()])
+postcss([scssfmt.plugin()])
   .process(css, {syntax: scss})
   .then(result => {
     const formatted = result.css
@@ -143,7 +140,7 @@ postcss([tidify.plugin()])
 
 ## Examples
 
-See [tests](https://github.com/morishitter/tidify/tree/master/test/fixtures).
+See [tests](https://github.com/morishitter/scssfmt/tree/master/test/fixtures).
 
 ## License
 

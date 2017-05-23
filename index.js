@@ -36,7 +36,7 @@ const isOneLinearRule = rule => rule.nodes.length === 1 && rule.nodes[0].type ==
 const countNewLine = str => str.split(NEW_LINE).length - 1
 const getIndent = node => TWO_SPACES.repeat(getDepth(node))
 
-const plugin = postcss.plugin('tidify', () => {
+const plugin = postcss.plugin('scssfmt', () => {
   return root => {
     root.walkRules(rule => {
       const indentation = getIndent(rule)
@@ -89,11 +89,11 @@ const plugin = postcss.plugin('tidify', () => {
   }
 })
 
-const tidify = (css, options) => {
+const scssfmt = (css, options) => {
   options = options || {}
   options.syntax = scss
   return postcss([plugin()]).process(css, options).css
 }
 
-module.exports = tidify
+module.exports = scssfmt
 module.exports.plugin = plugin

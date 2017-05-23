@@ -1,7 +1,7 @@
 {
-  "name": "tidify",
+  "name": "scssfmt",
   "version": "0.3.0",
-  "description": "Format your CSS tidily",
+  "description": "Fast and Simple SCSS formatter",
   "main": "index.js",
   "scripts": {
     "test": "ava"
@@ -13,22 +13,23 @@
     "verbose": true
   },
   "bin": {
-    "tidify": "cli.js"
+    "scssfmt": "cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/morishitter/tidify/git"
+    "url": "git://github.com/morishitter/scssfmt/git"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "keywords": [
     "css",
+    "sass",
+    "scss",
     "format",
     "formatter",
     "code style",
     "beautifier",
-    "tidy",
     "postcss-plugin",
     "postcss"
   ],
