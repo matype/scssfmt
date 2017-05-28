@@ -1,0 +1,146 @@
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+
+// color
+$sass-pink: #c69;
+$sass-green: #699;
+$black: #333;
+
+$break-point: 500px;
+
+$sizes: 'xs', 's', 'm', 'l', 'xl';
+
+html {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  @media (max-width: $break-point) {
+    font-size: 14px;
+  }
+}
+
+body {
+  color: $black;
+}
+
+.container {
+  h2 {
+    color: $sass-green;
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+code {
+  display: block;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  padding: 1.5rem 0.5rem;
+  width: 100%;
+  background-color: #eee;
+}
+
+.font-code {
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+.color-green {
+  color: $sass-green;
+}
+
+.container {
+  margin: 0 auto 1rem;
+  padding: 2rem;
+  max-width: 800px;
+
+  li {
+    margin-bottom: 0.4rem;
+  }
+
+  video {
+    max-width: 100%;
+  }
+
+  @media (max-width: $break-point) {
+    padding: 2rem 1rem;
+  }
+}
+
+.logo {
+  margin: 6rem 0 3rem;
+
+  > img {
+    display: block;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}
+
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  max-width: 100%;
+
+  @media (max-width: $break-point) {
+    width: 120px;
+  }
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: $sass-pink;
+  padding: 1rem;
+  padding-bottom: 0;
+
+  &__item {
+    margin-bottom: 1rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.concept {
+  font-size: 2.5rem;
+  color: $sass-green;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.lead {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #777;
+}
+
+.footer {
+  background-color: $sass-pink;
+  padding: 2rem 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.license {
+  margin-bottom: 0.5rem;
+}
+
+.copyright {
+  margin-bottom: 0;
+
+  > small > a {
+    color: inherit;
+  }
+}
+
+// utilities
+@each $size in $sizes {
+  $index: index($sizes, $size);
+  .mgb-#{$size} {
+    margin-bottom: #{$index / 2}rem;
+  }
+}

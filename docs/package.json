@@ -1,0 +1,25 @@
+{
+  "name": "scssfmt-docs",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "yarn run compile && yarn run optimize",
+    "compile": "node-sass scss/app.scss dist/app.css",
+    "format": "node ../cli.js -w 'scss/**/*.scss'",
+    "optimize": "postcss --no-map dist/app.css -c postcss.config.js -o dist/app.min.css",
+    "watch": "node-sass -w scss/app.scss -o dist"
+  },
+  "author": "Masaaki Morishita",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "csswring": "^6.0.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.0.0",
+    "postcss-flexbugs-fixes": "^3.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6"
+  }
+}
