@@ -1,7 +1,7 @@
 {
   "name": "scssfmt",
   "version": "0.4.0",
-  "description": "Fast and Simple SCSS formatter",
+  "description": "Standard SCSS code formatter",
   "main": "index.js",
   "scripts": {
     "test": "ava"

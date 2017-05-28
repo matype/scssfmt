@@ -1,6 +1,4 @@
-# scssfmt [![Build Status](https://travis-ci.org/morishitter/scssfmt.svg)](https://travis-ci.org/morishitter/scssfmt)
-
-> Fast and Simple SCSS formatter
+> Standard SCSS code formatter
 
 <div align="center" style="margin:30px 0">
   <a href="https://github.com/morishitter/scssfmt">
@@ -8,6 +6,23 @@
   </a>
 </div>
 <br>
+
+<p align="center">
+  <a href="https://travis-ci.org/morishitter/scssfmt">
+    <img src="https://camo.githubusercontent.com/e688e140da51d197ac1230acf711eb12f85f70be/68747470733a2f2f7472617669732d63692e6f72672f6d6f7269736869747465722f73637373666d742e737667" alt="Build Status" data-canonical-src="https://travis-ci.org/morishitter/scssfmt.svg" style="max-width:100%;">
+  </a>
+  <a href="https://www.npmjs.com/package/scssfmt">
+    <img src="https://img.shields.io/npm/v/scssfmt.svg?style=flat-square" alt="NPM Version">
+  </a>
+  <a href="https://david-dm.org/morishitter/stylefmt">
+    <img src="https://david-dm.org/morishitter/scssfmt.svg"
+        alt="Dependency Status">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-444444.svg?style=flat-square"
+        alt="License">
+  </a>
+</p>
 
 scssfmt is a fast and simple formatter for SCSS syntax of Sass.
 
