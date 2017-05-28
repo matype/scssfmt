@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="dist/app.min.css">
+  <title>scssfmt - fast and simple SCSS code formatter</title>
+</head>
+<body>
+  <section class="container">
+    <h1 class="logo">
+      <img src="http://morishitter.github.io/scssfmt-logo.svg" alt="scssfmt" />
+    </h1>
+    <p class="concept">Fast and simple SCSS code formatter</p>
+    <p class="lead">scssfmt is a tool to make your SCSS code readable and tidily.</p>
+    <a href="https://github.com/morishitter/scssfmt"><img class="github-ribbon" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </section>
+
+  <aside class="badges mgb-s">
+    <div class="badges__item">
+      <a href="https://travis-ci.org/morishitter/scssfmt">
+        <img src="https://camo.githubusercontent.com/e688e140da51d197ac1230acf711eb12f85f70be/68747470733a2f2f7472617669732d63692e6f72672f6d6f7269736869747465722f73637373666d742e737667" alt="Build Status" data-canonical-src="https://travis-ci.org/morishitter/scssfmt.svg" style="max-width:100%;">
+      </a>
+    </div>
+    <div class="badges__item">
+      <a href="https://www.npmjs.com/package/scssfmt">
+        <img src="https://img.shields.io/npm/v/scssfmt.svg?style=flat-square" alt="NPM Version">
+      </a>
+    </div>
+    <div class="badges__item">
+      <a href="https://david-dm.org/morishitter/stylefmt">
+        <img src="https://david-dm.org/morishitter/scssfmt.svg"
+             alt="Dependency Status">
+      </a>
+    </div>
+    <div class="badges__item">
+      <a href="https://opensource.org/licenses/MIT">
+        <img src="https://img.shields.io/badge/license-MIT-444444.svg?style=flat-square"
+             alt="License">
+      </a>
+    </div>
+  </aside> <!-- badges -->
+
+  <section class="container">
+    <h3>scssfmt'd code is:</h3>
+    <ul>
+      <li>easier to write : never worry about minor formatting concerns while hacking away.</li>
+      <li>easier to read : when all code looks the same you need not mentally convert others' formatting style into something you can understand.</li>
+      <li>easier to maintain : mechanical changes to the source don't cause unrelated changes to the file's formatting; diffs show only the real changes.</li>
+      <li>uncontroversial : never have a debate about spacing or brace position ever again!</li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h2 class="mgb-m">Example</h2>
+    <video src="./scssfmt-demo.mov" autoplay controls loop />
+  </section>
+
+  <section class="container">
+    <section>
+      <h2 class="mgb-s">Installation</h2>
+      <section class="mgb-m">
+        <h3>via npm:</h3>
+        <code>$ npm install scssfmt</code>
+      </section>
+      <section>
+        <h3>via yarn:</h3>
+        <code>$ yarn add --dev scssfmt</code>
+      </section>
+    </section>
+  </section> <!-- .usage -->
+
+  <section class="container mgb-xl">
+    <section>
+      <h2 class="mgb-s">Usage in CLI</h2>
+      <section class="mgb-m">
+        <h3 class="font-code">--watch</h3>
+        <p>Watch multiple files:</p>
+        <code>$ scssfmt --watch 'app/assets/stylesheets/**/*.scss'</code>
+      </section>
+    </section>
+    <a href="https://github.com/morishitter/scssfmt#usage" class="color-green">
+      See more usage on GitHub
+    </a>
+  </section> <!-- .usage -->
+
+  <footer class="footer">
+    <p class="license">The MIT License (MIT)</p>
+    <p class="copyright">
+      <small>Copyright © 2017 <a href="https://github.com/morishitter">Masaaki Morishita</a></small>
+    </p>
+  </footer>
+</body>
+</html>
