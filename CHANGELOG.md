@@ -1,3 +1,7 @@
+## v1.0.0
+
+- Major release :tada:
+
 ## v0.4.0
 
 - **Rename to scssfmt**
