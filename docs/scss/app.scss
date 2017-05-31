@@ -86,7 +86,7 @@ code {
   }
 }
 
-.badges {
+.socials {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,13 +94,23 @@ code {
   width: 100%;
   background-color: $sass-pink;
   padding: 1rem;
-  padding-bottom: 0;
 
   &__item {
-    margin-bottom: 1rem;
+    $icon-size: 32px;
+    width: $icon-size;
+    height: $icon-size;
 
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 2rem;
+    }
+
+    svg {
+      fill: darken($sass-pink, 20%);
+      transition: fill ease-out 0.2s;
+    }
+
+    &:hover {
+      svg { fill: lighten($sass-pink, 20%); }
     }
   }
 }
