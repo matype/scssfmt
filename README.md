@@ -30,27 +30,19 @@ scssfmt is 3 to 4 times faster than [stylefmt](https://github.com/morishitter/st
 
 ## Installation
 
-via npm:
-
 ```
 $ npm install scssfmt
 ```
 
-via yarn:
+Install to global (If you install scssfmt global, you can use it easily in CLI):
 
 ```
-$ yarn add --dev scssfmt
+$ npm install -g scssfmt
 ```
 
 ## Usage
 
 ### in Command Line
-
-If you install scssfmt global, you can use it easily in CLI.
-
-```
-$ npm install -g scssfmt
-```
 
 Simple usage:
 
