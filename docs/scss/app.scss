@@ -31,11 +31,20 @@ body {
 }
 
 code {
-  display: block;
   font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+code.code-block {
+  display: block;
   padding: 1.5rem 0.5rem;
   width: 100%;
   background-color: #eee;
+}
+
+code.code-inline {
+  display: inline-block;
+  background-color: #eee;
+  padding: 0 0.2rem
 }
 
 .font-code {
