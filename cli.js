@@ -67,8 +67,13 @@ if (argv.r) {
   const format = filePath => {
     const fullPath = path.resolve(process.cwd(), filePath)
     const css = fs.readFileSync(fullPath, 'utf-8')
-    const formatted = scssfmt(css)
-    if (css !== formatted) {
+    let formatted
+    try {
+      formatted = scssfmt(css)
+    } catch (e) {
+      console.error(chalk.red(`Sass Syntax Error: ${e.message.replace(/css/g, 'scss')}`))
+    }
+    if (formatted && css !== formatted) {
       fs.writeFileSync(fullPath, formatted)
       return true
     }
