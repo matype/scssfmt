@@ -1,3 +1,7 @@
+## v1.0.1
+
+- Fix so as not to exit a process when in CLI with `--watch` option
+
 ## v1.0.0
 
 - Major release :tada:
