@@ -68,11 +68,11 @@
     <section>
       <h2 class="mgb-s">Installation</h2>
       <section class="mgb-m">
-        <code>$ npm install scssfmt</code>
+        <code class="code-block">$ npm install scssfmt</code>
       </section>
       <section>
         <h3>Install to global:</h3>
-        <code>$ npm install -g scssfmt</code>
+        <code class="code-block">$ npm install -g scssfmt</code>
       </section>
     </section>
   </section> <!-- .usage -->
@@ -89,7 +89,24 @@
     <a href="https://github.com/morishitter/scssfmt#usage" class="color-green">
       See more usage on GitHub
     </a>
-  </section> <!-- .usage -->
+  </section>
+
+  <section class="container mgb-xl">
+    <section>
+      <h2 class="mgb-s">Rules for formatting</h2>
+      <ul>
+        <li>2 spaces indentation</li>
+        <li>require 1 space between a simple selector and combinator</li>
+        <li>require new line between selectors</li>
+        <li>require 1 space between selectors and <code>{</code></li>
+        <li>require new line after <code class="code-inline">{</code></li>
+        <li>disallow any spaces between property and <code class="code-inline">:</code></li>
+        <li>require 1 space between <code class="code-inline">:</code> and values</li>
+        <li>require a new line after declarations at least</li>
+        <li>require <code class="code-inline">;</code> in last declaration</li>
+      </ul>
+    </section>
+  </section>
 
   <footer class="footer">
     <p class="license">The MIT License (MIT)</p>

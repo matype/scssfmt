@@ -24,10 +24,6 @@
   </a>
 </p>
 
-scssfmt is a fast and simple formatter for SCSS syntax of Sass.
-
-scssfmt is 3 to 4 times faster than [stylefmt](https://github.com/morishitter/stylefmt).
-
 ## Installation
 
 ```
@@ -144,6 +140,28 @@ postcss([scssfmt.plugin()])
     const formatted = result.css
   })
 ```
+
+## Rules for formatting
+
+- 2 spaces indentation
+- require 1 space between a simple selector and combinator
+- require new line between selectors
+- require 1 space between selectors and `{`
+- require new line after `{`
+- disallow any spaces between property and `:`
+- require 1 space between `:` and values
+- require a new line after declarations at least
+- require `;` in last declaration
+- require 1 space between values and `!important`
+- Do not format any spaces between rules
+- Do not format any spaces between a rule and a comment
+- require 1 space between `@mixin` and mixin name
+- require 1 space between mixin name and `(`
+- require 1 space between `@extend` and base rules
+- require 1 space between `@include` and mixin name
+- disallow any spaces between `$variable` and `:`
+- require 1 space between `:` and name of variable
+- Do not format any spaces before `@else`
 
 ## Examples
 
