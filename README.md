@@ -2,7 +2,7 @@
 
 <div align="center" style="margin:30px 0">
   <a href="https://github.com/morishitter/scssfmt">
-    <img width=360px src="http://morishitter.github.io/scssfmt-logo.svg">
+    <img width=360px src="http://scssfmt.com/logo.svg">
   </a>
 </div>
 <br>
