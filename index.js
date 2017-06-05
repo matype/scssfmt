@@ -75,6 +75,7 @@ const plugin = postcss.plugin('scssfmt', () => {
       if (decl.parent.type === 'rule' && decl.parent.onelinear) {
         decl.raws.before = ONE_SPACE
       }
+      if (decl.raws.important) decl.raws.important = `${ONE_SPACE}!important`
     })
 
     root.walkAtRules(atrule => {

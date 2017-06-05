@@ -155,6 +155,7 @@ postcss([scssfmt.plugin()])
 - require 1 space between values and `!important`
 - Do not format any spaces between rules
 - Do not format any spaces between a rule and a comment
+- require 1 space between a value and `!important`
 - require 1 space between `@mixin` and mixin name
 - require 1 space between mixin name and `(`
 - require 1 space between `@extend` and base rules
