@@ -1,3 +1,7 @@
+## v1.0.2
+
+- Format spaces between a value and `!important` keyword
+
 ## v1.0.1
 
 - Fix so as not to exit a process when in CLI with `--watch` option
