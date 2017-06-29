@@ -41,8 +41,8 @@
     "diff": "^3.2.0",
     "globby": "^6.1.0",
     "minimist": "^1.2.0",
-    "postcss": "^6.0.1",
-    "postcss-scss": "^1.0.0",
+    "postcss": "^6.0.3",
+    "postcss-scss": "^1.0.2",
     "stdin": "^0.0.1"
   },
   "devDependencies": {
