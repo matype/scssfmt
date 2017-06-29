@@ -28,7 +28,6 @@ const chalk = require('chalk')
 const JsDiff = require('diff')
 const chokidar = require('chokidar')
 
-
 if (argv.v) {
   console.log(pkg.version)
   process.exit()
@@ -56,12 +55,8 @@ if (argv.r) {
   const globby = require('globby')
   globby([path.join(argv.r)].concat(argv._)).then(processMultipleFiles)
 } else if (argv.w) {
-  let opts = {
-    ignoreInitial: true
-  }
-  if (argv.i) {
-    opts.ignored = argv.i
-  }
+  let opts = { ignoreInitial: true }
+  argv.i && (opts.ignored = argv.i)
   let watcher = chokidar.watch(argv.w, opts)
   let log = console.log.bind(console)
   const format = filePath => {
@@ -81,14 +76,10 @@ if (argv.r) {
   }
   watcher
     .on('add', filePath => {
-      if (format(filePath)) {
-        log(chalk.yellow(`Added ${filePath} file has been formatted`))
-      }
+      format(filePath) && log(chalk.yellow(`Added ${filePath} file has been formatted`))
     })
     .on('change', filePath => {
-      if (format(filePath)) {
-        log(chalk.green(`Changed ${filePath} file has been formatted`))
-      }
+      format(filePath) && log(chalk.green(`Changed ${filePath} file has been formatted`))
     })
 } else if (argv._[0]) {
   const input = argv._[0]
@@ -113,14 +104,12 @@ if (argv.r) {
   })
 }
 
-
 function processMultipleFiles (files) {
   files = files.filter(isTargetFile).sort()
   if (!files.length) {
     console.error("Files glob patterns specified did not match any css files.")
     return
   }
-
   Promise.all(files.map(file => {
     const fullPath = path.resolve(process.cwd(), file)
     const css = fs.readFileSync(fullPath, 'utf-8')
@@ -135,9 +124,7 @@ function processMultipleFiles (files) {
           return handleDiff(file, css, formatted)
         } else if (css !== formatted) {
           fs.writeFile(fullPath, formatted, err => {
-            if (err) {
-              throw err
-            }
+            if (err) throw err
           })
           return file
         }
@@ -159,11 +146,9 @@ function processMultipleFiles (files) {
   })
 }
 
-
 function isTargetFile (filePath) {
   return /^\.css|\.scss$/i.test(path.extname(filePath))
 }
-
 
 function handleDiff (file, original, formatted) {
   let diff
