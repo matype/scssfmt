@@ -14,7 +14,7 @@
   <a href="https://www.npmjs.com/package/scssfmt">
     <img src="https://img.shields.io/npm/v/scssfmt.svg?style=flat-square" alt="NPM Version">
   </a>
-  <a href="https://david-dm.org/morishitter/stylefmt">
+  <a href="https://david-dm.org/morishitter/scssfmt">
     <img src="https://david-dm.org/morishitter/scssfmt.svg"
         alt="Dependency Status">
   </a>
