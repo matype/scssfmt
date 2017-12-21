@@ -89,6 +89,7 @@ if (argv.r) {
   const formatted = scssfmt(css)
   if (argv.d) {
     console.log(handleDiff(input, css, formatted))
+    process.exit(1)
   } else if (css !== formatted) {
     fs.writeFileSync(output, formatted)
   }
