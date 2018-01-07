@@ -133,6 +133,7 @@ function processMultipleFiles (files) {
   })).then(messages => {
     if (argv.d) {
       console.log(messages.join('\n\n'))
+      process.exit(1)
     } else {
       messages = messages.filter(file => {
         return file
