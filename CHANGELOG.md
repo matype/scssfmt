@@ -1,3 +1,12 @@
+## v1.0.4
+
+- Return 1 exit code using `--diff` and `--recursive` option
+
+
+## v1.0.3
+
+- Return 1 exit code when using `--diff` option
+
 ## v1.0.2
 
 - Format spaces between a value and `!important` keyword
