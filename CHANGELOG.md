@@ -1,3 +1,8 @@
+## v1.0.5
+
+- Fixed [#13](https://github.com/morishitter/scssfmt/issues/13)
+
+
 ## v1.0.4
 
 - Return 1 exit code using `--diff` and `--recursive` option
