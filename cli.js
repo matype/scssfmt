@@ -105,6 +105,8 @@ if (argv.r) {
   })
 }
 
+const noDiffsWords = 'There is no difference with the original file.'
+
 function processMultipleFiles (files) {
   files = files.filter(isTargetFile).sort()
   if (!files.length) {
@@ -133,7 +135,9 @@ function processMultipleFiles (files) {
   })).then(messages => {
     if (argv.d) {
       console.log(messages.join('\n\n'))
-      process.exit(1)
+      if (!messages[0].match(new RegExp(noDiffsWords, 'i'))) {
+        process.exit(1)
+      }
     } else {
       messages = messages.filter(file => {
         return file
@@ -155,7 +159,7 @@ function isTargetFile (filePath) {
 function handleDiff (file, original, formatted) {
   let diff
   if (original === formatted) {
-    diff = 'There is no difference with the original file.'
+    diff = noDiffsWords
   }
 
   if (chalk.supportsColor) {
