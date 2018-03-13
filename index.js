@@ -28,44 +28,42 @@ const getNodeBefore = (node, indentation) => {
   return nodeBefore
 }
 
-const plugin = postcss.plugin('scssfmt', _ => {
-  return root => {
-    root.walkRules(rule => {
-      const indentation = getIndent(rule)
-      isOneLinearRule(rule) && (rule.onelinear = true)
-      rule.raws.before = getNodeBefore(rule, indentation)
-      rule.raws.between = ONE_SPACE
-      rule.raws.semicolon = true
-      rule.raws.after = isOneLinearRule(rule) ? ONE_SPACE : NEW_LINE + indentation
-      if (rule.raws.selector) rule.selector = rule.raws.selector.raw
-      else {
-        let tmp = [], selector
-        const separator = `,${NEW_LINE}` + indentation
-        rule.selectors.forEach(selector => {
-          selector = !hasPlusInsideParens(selector) && !isAttrSelector(selector) ? selector.replace(/\s*([+~>])\s*/g, " $1 ").trim() : isAttrSelector(selector) && selector.replace(/\[\s*(\S+)\s*\]/g, "[$1]")
-          tmp.push(selector)
-        })
-        rule.selector = tmp.join(separator)
-      }
-    })
+const plugin = postcss.plugin('scssfmt', _ => root => {
+  root.walkRules(rule => {
+    const indentation = getIndent(rule)
+    isOneLinearRule(rule) && (rule.onelinear = true)
+    rule.raws.before = getNodeBefore(rule, indentation)
+    rule.raws.between = ONE_SPACE
+    rule.raws.semicolon = true
+    rule.raws.after = isOneLinearRule(rule) ? ONE_SPACE : NEW_LINE + indentation
+    if (rule.raws.selector) rule.selector = rule.raws.selector.raw
+    else {
+      let tmp = [], selector
+      const separator = `,${NEW_LINE}` + indentation
+      rule.selectors.forEach(selector => {
+        selector = !hasPlusInsideParens(selector) && !isAttrSelector(selector) ? selector.replace(/\s*([+~>])\s*/g, " $1 ").trim() : isAttrSelector(selector) && selector.replace(/\[\s*(\S+)\s*\]/g, "[$1]")
+        tmp.push(selector)
+      })
+      rule.selector = tmp.join(separator)
+    }
+  })
 
-    root.walkDecls(decl => {
-      decl.raws.value && (decl.raws.value.raw = decl.raws.value.raw.trim())
-      decl.raws.before = decl === root.first ? NO_SPACES : getNodeBefore(decl, getIndent(decl))
-      decl.raws.between = `:${ONE_SPACE}`
-      decl.parent.type === 'rule' && decl.parent.onelinear && (decl.raws.before = ONE_SPACE)
-      decl.raws.important && (decl.raws.important = `${ONE_SPACE}!important`)
-    })
+  root.walkDecls(decl => {
+    decl.raws.value && (decl.raws.value.raw = decl.raws.value.raw.trim())
+    decl.raws.before = decl === root.first ? NO_SPACES : getNodeBefore(decl, getIndent(decl))
+    decl.raws.between = `:${ONE_SPACE}`
+    decl.parent.type === 'rule' && decl.parent.onelinear && (decl.raws.before = ONE_SPACE)
+    decl.raws.important && (decl.raws.important = `${ONE_SPACE}!important`)
+  })
 
-    root.walkAtRules(atrule => {
-      const indentation = getIndent(atrule)
-      atrule.raws.before = atrule.name === 'else' ? atrule.raws.before : getNodeBefore(atrule, indentation)
-      atrule.raws.after = NEW_LINE + indentation
-      atrule.raws.between = atrule.nodes ? ONE_SPACE : NO_SPACES
-      atrule.raws.afterName = atrule.params ? ONE_SPACE : NO_SPACES
-      atrule.raws.semicolon !== undefined && (atrule.raws.semicolon = true)
-    })
-  }
+  root.walkAtRules(atrule => {
+    const indentation = getIndent(atrule)
+    atrule.raws.before = atrule.name === 'else' ? atrule.raws.before : getNodeBefore(atrule, indentation)
+    atrule.raws.after = NEW_LINE + indentation
+    atrule.raws.between = atrule.nodes ? ONE_SPACE : NO_SPACES
+    atrule.raws.afterName = atrule.params ? ONE_SPACE : NO_SPACES
+    atrule.raws.semicolon !== undefined && (atrule.raws.semicolon = true)
+  })
 })
 
 module.exports = (css, options = { syntax: scss }) => postcss([plugin()]).process(css, options).css
