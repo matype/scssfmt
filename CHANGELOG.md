@@ -1,3 +1,9 @@
+## v1.0.6
+
+- Refactor
+- Upgrade dependencies
+
+
 ## v1.0.5
 
 - Fixed [#13](https://github.com/morishitter/scssfmt/issues/13)
