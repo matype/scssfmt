@@ -28,6 +28,8 @@ const chalk = require('chalk')
 const JsDiff = require('diff')
 const chokidar = require('chokidar')
 
+const noDiffsWords = 'There is no difference with the original file.'
+
 if (argv.v) {
   console.log(pkg.version)
   process.exit()
@@ -104,8 +106,6 @@ if (argv.r) {
       .then(result => process.stdout.write(result.css))
   })
 }
-
-const noDiffsWords = 'There is no difference with the original file.'
 
 function processMultipleFiles (files) {
   files = files.filter(isTargetFile).sort()
