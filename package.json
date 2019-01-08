@@ -1,6 +1,6 @@
 {
   "name": "scssfmt",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Standard SCSS code formatter",
   "main": "index.js",
   "scripts": {
