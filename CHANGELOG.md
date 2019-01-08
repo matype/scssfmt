@@ -1,3 +1,8 @@
+## v1.0.7
+
+- Fixed [#16](https://github.com/morishitter/scssfmt/issues/16) in [#17](https://github.com/morishitter/scssfmt/pull/17) by @floreks
+- Upgrade dependencies
+
 ## v1.0.6
 
 - Refactor
