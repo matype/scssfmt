@@ -36,13 +36,13 @@
   "author": "Masaaki Morishita",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.3.2",
-    "chokidar": "^2.0.2",
-    "diff": "^3.5.0",
+    "chalk": "^2.4.2",
+    "chokidar": "^2.0.4",
+    "diff": "^4.0.1",
     "globby": "^8.0.1",
     "minimist": "^1.2.0",
-    "postcss": "^6.0.19",
-    "postcss-scss": "^1.0.4",
+    "postcss": "^7.0.7",
+    "postcss-scss": "^2.0.0",
     "stdin": "^0.0.1"
   },
   "devDependencies": {
